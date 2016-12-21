@@ -4,9 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KinectForNUIWithWPFControl"
+        xmlns:k="http://schemas.microsoft.com/kinect/2014"
+        xmlns:kinectForNUIWithWPFControl="clr-namespace:KinectForNUIWithWPFControl"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" 
+        Loaded="Window_Loaded"
+        Closing="Window_Closing">
+    <StackPanel Orientation="Vertical">
+        <k:KinectUserViewer HorizontalAlignment="Left" Width="80" Height="60" />
+        <k:KinectRegion Name="kinectRegion" Width="800" Height="600">
+            <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                <Canvas Width="1600">
+                    <kinectForNUIWithWPFControl:DragDropDecorator Canvas.Left="400" Canvas.Top="0">
+                        <Rectangle Width="300" Height="300" Fill="Green" />
+                    </kinectForNUIWithWPFControl:DragDropDecorator>
+                    <Button Name="btn" Click="Button_Click" FontSize="20" Content="Press Me!" Width="300" Height="300"></Button>
+                </Canvas>
+            </ScrollViewer>
+        </k:KinectRegion>
+    </StackPanel>
 </Window>
